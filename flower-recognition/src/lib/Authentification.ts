@@ -1,13 +1,14 @@
+
 import { auth, db } from './firebaseConfig'
-import { User,
+import {
+  User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   UserCredential,
   onAuthStateChanged
 } from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
-
+import { ref, set } from 'firebase/database' // Use Realtime Database
 
 interface SignUpData {
   email: string
@@ -19,12 +20,12 @@ interface SignUpData {
 export async function signUp({ email, password, displayName }: SignUpData) {
   const cred: UserCredential = await createUserWithEmailAndPassword(auth, email, password)
   const { user } = cred
-  // save in Firestore under `users/{uid}`
-  await setDoc(doc(db, 'users', user.uid), {
+  // save in Realtime Database under `users/{uid}`
+  await set(ref(db, `users/${user.uid}`), {
     uid: user.uid,
     email: user.email,
     displayName: displayName || null,
-    createdAt: new Date()
+    createdAt: new Date().toISOString()
   })
   return user
 }
@@ -38,6 +39,7 @@ export function logIn(email: string, password: string) {
 export function logOut() {
   return signOut(auth)
 }
+
 export function onUserStateChange(callback: (user: User | null) => void) {
   return onAuthStateChanged(auth, callback)
 }
