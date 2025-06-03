@@ -1,39 +1,63 @@
-import { auth, db } from '../../lib/firebaseConfig'
+// filepath: src/app/page.tsx
+"use client";
+
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  UserCredential,
-  onAuthStateChanged,
-  User,
-} from 'firebase/auth'
-import { doc, setDoc } from 'firebase/firestore'
+  Form,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+  FormField,
+} from "@/components/ui/form";
+import { useForm } from "react-hook-form";
 
-export interface SignUpData {
-  email: string
-  password: string
-  displayName?: string
-}
+export default function Auth() {
+  const form = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-export async function signUp({ email, password, displayName }: SignUpData) {
-  const { user }: UserCredential = await createUserWithEmailAndPassword(auth, email, password)
-  await setDoc(doc(db, 'users', user.uid), {
-    uid: user.uid,
-    email: user.email,
-    displayName: displayName || null,
-    createdAt: new Date(),
-  })
-  return user
-}
-
-export function logIn(email: string, password: string) {
-  return signInWithEmailAndPassword(auth, email, password)
-}
-
-export function logOut() {
-  return signOut(auth)
-}
-
-export function onUserStateChange(callback: (user: User | null) => void) {
-  return onAuthStateChanged(auth, callback)
+  return (
+    <div>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit((data) => {
+            // handle form submission here
+            console.log(data);
+          })}
+          className="space-y-4"
+        >
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <input type="email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <input type="password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </Form>
+    </div>
+  );
 }
