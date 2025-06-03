@@ -1,4 +1,4 @@
-// filepath: src/app/page.tsx
+
 "use client";
 
 import {
@@ -10,7 +10,7 @@ import {
   FormField,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-
+import { useRouter } from 'next/router';
 export default function Auth() {
   const form = useForm({
     defaultValues: {
