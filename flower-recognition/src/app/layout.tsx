@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Florile noastre",
   keywords: ["flowers", "blog", "gallery", "nextjs"],
-  description: "Florile noastre - Explore, Learn and Identify Flowers with us",
+  description: "Explore, Learn and Identify Flowers with us",
 };
 
 export default function RootLayout({

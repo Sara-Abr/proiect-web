@@ -9,15 +9,17 @@ import {
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import LoginButton from "@/components/ui/loginButton";
+import { LoginForm } from "@/components/login-form";
+
 export default function LogIn(){
- const form = useForm({
+ /*const form = useForm({
     defaultValues: {
       email: "",
       password: "",
     },
-  });
+  });*/
 
-  return (
+  /*return (
     <div>
        <LoginButton />
       <Form {...form}>
@@ -57,7 +59,14 @@ export default function LogIn(){
           <button type="submit">Submit</button>
         </form>
       </Form>
+    </div> 
+  );*/
+  return(
+     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
+      <div className="w-full max-w-sm">
+        <LoginForm />
+      </div>
     </div>
-  );
+  )
 };
 
