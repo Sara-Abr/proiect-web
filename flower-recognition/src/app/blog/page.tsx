@@ -1,6 +1,6 @@
+'use client'
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useRouter } from 'next/navigation';
 type Post = {
   title: string;
   content: string;
@@ -13,11 +13,11 @@ const BlogPage: React.FC = () => {
   ]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    navigate('/login');
+     router.push('/logIn');
   };
 
   const addPost = () => {

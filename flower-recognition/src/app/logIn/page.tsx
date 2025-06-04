@@ -1,6 +1,4 @@
-
-"use client";
-
+'use client'
 import {
   Form,
   FormItem,
@@ -10,23 +8,9 @@ import {
   FormField,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-//import { useRouter } from 'next/router';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-const auth = getAuth();
-onAuthStateChanged(auth, (user) => { //trbuie implementat in fiecare pagina pt care conteaza autentificarea
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-   // const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
-export default function Auth() {
-  const form = useForm({
+import LoginButton from "@/components/ui/loginButton";
+export default function LogIn(){
+ const form = useForm({
     defaultValues: {
       email: "",
       password: "",
@@ -35,6 +19,7 @@ export default function Auth() {
 
   return (
     <div>
+       <LoginButton />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {
@@ -74,4 +59,5 @@ export default function Auth() {
       </Form>
     </div>
   );
-}
+};
+
