@@ -9,31 +9,12 @@ import {
   FormField,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useRouter } from 'next/router';
-import { MailOpen } from "lucide-react"
-import { useState } from "react";
-import { auth, provider_google } from "../lib/firebaseConfig";
-import { signInWithPopup } from "firebase/auth";
+//import { Button } from "@/components/ui/button";
+//import { Input } from "@/components/ui/input";
+//import { useRouter } from 'next/router';
+//import { MailOpen } from "lucide-react"
+import LoginButton from "@/components/ui/loginButton";
 
-  const [clicked, setClicked] = useState(false);
-
-  const handleClick = async () => {
-    try {
-      setClicked(true);
-      await signInWithPopup(auth, provider_google);
-    } catch (error) {
-      console.error("Login error:", error);
-      setClicked(false); // reset if there's an error
-    };
-
-  return (
-    <Button onClick={handleClick}>
-      <MailOpen /> {clicked ? "Logged In" : "Login with Google"}
-    </Button>
-  );
-  }
 export default function Home() {
   const form = useForm({
     defaultValues: {
@@ -44,6 +25,7 @@ export default function Home() {
 
   return (
     <div>
+       <LoginButton />
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit((data) => {

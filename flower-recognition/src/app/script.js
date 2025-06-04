@@ -1,4 +1,4 @@
-function openLightbox(title, description, imageUrl) {
+/*function openLightbox(title, description, imageUrl) {
     // Afișează lightbox-ul când este apăsată o imagine
     document.getElementById('lightbox').style.display = 'flex';
     document.getElementById('lightbox-title').textContent = title;       // Setează titlul
@@ -9,4 +9,4 @@ function openLightbox(title, description, imageUrl) {
   function closeLightbox() {
     // Ascunde lightbox-ul când se face click pe fundal
     document.getElementById('lightbox').style.display = 'none';
-  }
+  } */

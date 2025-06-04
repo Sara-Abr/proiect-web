@@ -1,21 +1,33 @@
 // lib/firebaseConfig.ts
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getDatabase } from 'firebase/database'; // Import Realtime Database
-import { getAuth } from 'firebase/auth';
-import firebase from 'firebase/compat/app';
+import { getDatabase } from 'firebase/database'; 
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+//import 'firebase/compat/auth';
+//import 'firebase/compat/database';
+//import firebase from 'firebase/compat/app';
 
-//<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
+
+  apiKey: "AIzaSyB9jGHMi8rPWs20Kr43mrwCe2Ljxk-h0Eg",
+
+  authDomain: "flower-recognition-b300a.firebaseapp.com",
+
+  databaseURL: "https://flower-recognition-b300a-default-rtdb.europe-west1.firebasedatabase.app",
+
+  projectId: "flower-recognition-b300a",
+
+  storageBucket: "flower-recognition-b300a.firebasestorage.app",
+
+  messagingSenderId: "1064456115055",
+
+  appId: "1:1064456115055:web:8819ab619daae558ba8e9a"
+
 };
+
+console.log("Firebase Config:", firebaseConfig); 
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getDatabase(app); // Use Realtime Database
-export const auth = getAuth(app);
-export const provider_google = new firebase.auth.GoogleAuthProvider(); //pt conectarea cu contul de google
-export { db };
+const auth = getAuth(app);
+export const provider_google = new GoogleAuthProvider(); //pt conectarea cu contul de google
+export { db, auth,  app};

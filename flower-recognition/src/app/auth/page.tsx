@@ -10,7 +10,7 @@ import {
   FormField,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { useRouter } from 'next/router';
+//import { useRouter } from 'next/router';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const auth = getAuth();
@@ -18,7 +18,7 @@ onAuthStateChanged(auth, (user) => { //trbuie implementat in fiecare pagina pt c
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = user.uid;
+   // const uid = user.uid;
     // ...
   } else {
     // User is signed out
