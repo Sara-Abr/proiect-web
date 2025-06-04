@@ -17,5 +17,5 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getDatabase(app); // Use Realtime Database
 export const auth = getAuth(app);
-export const provider_google = new firebase.auth.GoogleAuthProvider();
+export const provider_google = new firebase.auth.GoogleAuthProvider(); //pt conectarea cu contul de google
 export { db };
