@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import LoginButton from "./ui/loginButton"
+import LoginButton from "./loginButton"
 
 export function LoginForm({
   className,
@@ -32,7 +32,7 @@ export function LoginForm({
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="name@example.com"
                   required
                 />
               </div>

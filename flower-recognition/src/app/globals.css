@@ -6,13 +6,13 @@ body {
   color: #333;
 }
 
-header {
-  background-color: #88c9a1; /* verde pastel mediu, relaxant */
+/*header {
+  background-color: #88c9a1; /* verde pastel mediu, relaxant 
   color: white;
   padding: 20px;
   text-align: center;
   position: relative;
-}
+}*/
 
 nav {
   margin-top: 10px;

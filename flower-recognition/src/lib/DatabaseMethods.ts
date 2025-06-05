@@ -7,7 +7,7 @@ import {
   remove,
   update,
   //child,
-} from 'firebase/database'; // Use Realtime Database methods
+} from 'firebase/database'; 
 
 interface Item {
   name: string;

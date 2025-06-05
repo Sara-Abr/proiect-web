@@ -8,7 +8,7 @@ import {
   UserCredential,
   onAuthStateChanged
 } from 'firebase/auth'
-import { ref, set } from 'firebase/database' // Use Realtime Database
+import { ref, set } from 'firebase/database' 
 
 interface SignUpData {
   email: string

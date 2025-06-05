@@ -21,8 +21,6 @@ const firebaseConfig = {
 
 };
 
-console.log("Firebase Config:", firebaseConfig); 
-
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getDatabase(app); // Use Realtime Database
 const auth = getAuth(app);
