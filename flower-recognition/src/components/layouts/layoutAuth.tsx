@@ -1,6 +1,6 @@
 
 import { ReactNode } from 'react'
-import { AuthProvider } from '../../lib/useAuth'
+import { AuthProvider } from '../../auth/useAuthContext'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

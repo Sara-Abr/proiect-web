@@ -1,46 +1,75 @@
-'use client'
-import Image from 'next/image';
-import { useState } from 'react';
+'use client';
 
-const images = [
-  { src: '/anthurium.jpg', name: 'Floare 1', description: 'anthurium este o floare care poate avea multe culori' },
-  { src: '/clematis.jpg', name: 'Floare 2', description: 'Aceasta este floarea 2.' },
+import { useState } from 'react';
+import Image from 'next/image';
+
+type ImageType = {
+  src: string;
+  name: string;
+  description: string;
+};
+
+const images: ImageType[] = [
+  { src: '/craciunita.jpg', name: 'craciunita', description: 'Aceasta este craciunita, cea mai cunoscuta floare in timpul sarbatorilor de iarna.' },
+  { src: '/dalia.jpg', name: 'dalia', description: 'Aceasta floare colorata iti va face primavara si gradina mai frumoasa.' },
   { src: '/nufar.jpg', name: 'Nufăr', description: 'Un nufăr frumos pe apă.' },
-  { src: '/dalia.jpg', name: 'Floare 3', description: 'Descriere 3' },
-  { src: '/gerbera.jpg', name: 'Floare 4', description: 'Descriere 4' },
-  { src: '/gladiola.jpg', name: 'Floare 5', description: 'Descriere 5' },
-  { src: '/hibiscus.jpg', name: 'Floare 6', description: 'Descriere 6' },
-  { src: '/petunie.jpg', name: 'Floare 7', description: 'Descriere 7' },
-  { src: '/paradise_bird.jpg', name: 'Floare 8', description: 'Descriere 8' },
-  { src: '/flori/7.jpg', name: 'Floare 9', description: 'Descriere 9' },
-  { src: '/flori/8.jpg', name: 'Floare 10', description: 'Descriere 10' },
+  { src: '/gerbera.jpg', name: 'gerbera', description: 'Descriere 3' },
+  { src: '/gladiola.jpg', name: 'gladiola', description: 'Descriere 4' },
+  { src: '/hibiscus.jpg', name: 'hibiscus', description: 'Descriere 5' },
+  { src: '/paradise_bird.jpg', name: 'paradise_bird', description: 'O floare care te duce cu gandul la vacante.' },
+  { src: '/petunir.jpg', name: 'petunie', description: 'Descriere 7' },
+  { src: '/regina_noptii.jpg', name: 'regina noptii', description: 'Cea mai frumoasa floare din timpul noptii.' },
+  { src: '/trandafir.jpg', name: 'trandafir', description: 'Descriere 9' },
+  { src: '/clematis.jpg', name: 'clematis', description: 'Descriere 10' },
 ];
 
+const IMAGES_PER_ROW = 5;
+const VISIBLE_ROWS = 2;
+
 export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState<null | typeof images[0]>(null);
+  const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6 text-center">Galerie Foto</h2>
+    <div className="p-4 max-w-screen-md mx-auto">
+      <h2 className="text-2xl font-bold mb-4 text-center">Galerie Foto</h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-4">
-        {images.map((image, index) => (
-          <div key={index} className="text-center cursor-pointer" onClick={() => setSelectedImage(image)}>
-            <div className="relative w-full h-24">
-              <Image
-                src={image.src}
-                alt={image.name}
-                fill
-                className="object-cover rounded shadow"
-              />
+      {/* Scroll vertical */}
+      <div
+        className="overflow-y-auto border border-gray-300 rounded p-2"
+        style={{
+          maxHeight: `${VISIBLE_ROWS * 12}rem`, // înălțimea containerului ca să încapă fix 2 rânduri (aprox 12rem pe rând)
+        }}
+      >
+        <div
+          className="grid gap-4"
+          style={{
+            gridTemplateColumns: `repeat(${IMAGES_PER_ROW}, 1fr)`,
+          }}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className="cursor-pointer text-center"
+              onClick={() => setSelectedImage(image)}
+            >
+              <div className="relative w-full h-24 mx-auto">
+                <Image
+                  src={image.src}
+                  alt={image.name}
+                  fill
+                  className="object-cover rounded shadow"
+                  unoptimized
+                />
+              </div>
+              <p className="mt-2 text-sm font-medium">{image.name}</p>
             </div>
-            <p className="mt-1 text-sm font-medium">{image.name}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
+      {/* Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg max-w-sm w-full relative">
             <button
               onClick={() => setSelectedImage(null)}
@@ -54,6 +83,7 @@ export default function Gallery() {
                 alt={selectedImage.name}
                 fill
                 className="object-cover rounded"
+                unoptimized
               />
             </div>
             <h3 className="text-lg font-bold">{selectedImage.name}</h3>

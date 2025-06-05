@@ -1,16 +1,15 @@
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/auth/utils";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import LoginButton from "./loginButton"
-//import { LogIn } from ".../lib/Authentification"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import LoginButton from "./loginButton";
 
 export function LoginForm({
   className,
@@ -18,10 +17,10 @@ export function LoginForm({
 }: React.ComponentProps<"div">) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
+      <Card className="bg-[#f8dbe8] text-[#333] shadow-lg rounded-xl">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-[#436f53] text-2xl">Login to your account</CardTitle>
+          <CardDescription className="text-[#6a8f73]">
             Enter your email below to login to your account
           </CardDescription>
         </CardHeader>
@@ -29,36 +28,45 @@ export function LoginForm({
           <form>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-[#436f53]">Email</Label>
                 <Input
                   id="email"
                   type="email"
                   placeholder="name@example.com"
                   required
+                  className="border-[#88c9a1] focus:ring-[#88c9a1]"
                 />
               </div>
               <div className="grid gap-3">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password" className="text-[#436f53]">Password</Label>
                   <a
                     href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                    className="ml-auto text-sm text-[#6a8f73] hover:underline underline-offset-4"
                   >
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  className="border-[#88c9a1] focus:ring-[#88c9a1]"
+                />
               </div>
-              <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
+              <div className="flex flex-col gap-3 mt-2">
+                <Button
+                  type="submit"
+                  className="w-full bg-[#436f53] hover:bg-[#6a8f73] text-white"
+                >
                   Login
                 </Button>
-                <LoginButton/>
+                <LoginButton />
               </div>
             </div>
-            <div className="mt-4 text-center text-sm">
+            <div className="mt-4 text-center text-sm text-[#436f53]">
               Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4">
+              <a href="#" className="underline underline-offset-4 text-[#6a8f73] hover:text-[#436f53]">
                 Sign up
               </a>
             </div>
@@ -66,5 +74,5 @@ export function LoginForm({
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
