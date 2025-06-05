@@ -1,18 +1,23 @@
+@import "tailwindcss";
+:root {
+  --background: #e3f2e8;
+  --foreground: #333;
+}
 body {
- /* font-family: 'Segoe UI', sans-serif; */
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #e3f2e8; /* verde pastel ușor mai închis */
-  color: #333;
+   background: var(--background);
+  color: var(--foreground);
 }
 
-/*header {
-  background-color: #88c9a1; /* verde pastel mediu, relaxant 
+header {
+  background-color: #88c9a1; /* verde pastel mediu, relaxant */
   color: white;
   padding: 20px;
   text-align: center;
   position: relative;
-}*/
+}
 
 nav {
   margin-top: 10px;
@@ -29,7 +34,6 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* Responsive nav */
 .nav-toggle {
   display: none;
   font-size: 28px;
