@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { MailOpen } from "lucide-react";
-import { auth, provider_google } from "../../lib/firebaseConfig";
+import { auth, provider_google } from "../../config/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 
 export default function LoginButton() {

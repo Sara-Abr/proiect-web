@@ -1,5 +1,5 @@
 
-import { auth, db } from './firebaseConfig'
+import { auth, db } from '../config/firebaseConfig'
 import {
   User,
   createUserWithEmailAndPassword,

@@ -1,5 +1,5 @@
 
-import { db } from './firebaseConfig';
+import { db } from '../config/firebaseConfig';
 import {
   ref,
   push,
