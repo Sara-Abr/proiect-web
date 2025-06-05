@@ -1,6 +1,10 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
+//import '.globals.css'; // Ensure you have a global CSS file for styles
+/*export function MyApp({ Component, pageProps }) {
+  return ;
+}*/
 export default function Home() {
 const router = useRouter();
  
