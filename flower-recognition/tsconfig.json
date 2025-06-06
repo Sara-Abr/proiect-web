@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/config/firebaseConfig.tsx", "src/components/Posts/Posts.js", "src/auth/useFirebaseAuth.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/config/firebaseConfig.tsx", "src/app/posts/Posts.js", "src/auth/useFirebaseAuth.js", "src/auth/AuthContext.tsx", "src/auth/useFirebaseAuth.ts"],
   "exclude": ["node_modules"]
 }

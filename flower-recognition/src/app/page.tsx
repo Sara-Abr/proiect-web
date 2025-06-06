@@ -1,10 +1,7 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation';
-//import '.globals.css'; // Ensure you have a global CSS file for styles
-/*export function MyApp({ Component, pageProps }) {
-  return ;
-}*/
+
 export default function Home() {
 const router = useRouter();
  
@@ -12,10 +9,11 @@ const router = useRouter();
   <div className="home-layout">
       <nav className="navbar">
         <ul>
-          <li onClick={() =>router.push('/l')}>Acasă</li>
+          <li onClick={() =>router.push('/')}>Acasă</li>
           <li onClick={() =>  router.push('/galerie')}>Galerie</li>
           <li onClick={() => router.push('/blog')}>Blog</li>
-          <li onClick={() =>router.push('/logIn')}>Login</li>
+          <li onClick={() =>router.push('/posts')}>Postările mele</li>
+          <li onClick={() =>router.push('/account')}>Account</li>
         </ul>
       </nav>
 

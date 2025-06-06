@@ -10,6 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import LoginButton from "./loginButton";
+import Link from 'next/link';
 
 export function LoginForm({
   className,
@@ -40,12 +41,6 @@ export function LoginForm({
               <div className="grid gap-3">
                 <div className="flex items-center">
                   <Label htmlFor="password" className="text-[#436f53]">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto text-sm text-[#6a8f73] hover:underline underline-offset-4"
-                  >
-                    Forgot your password?
-                  </a>
                 </div>
                 <Input
                   id="password"
@@ -66,9 +61,9 @@ export function LoginForm({
             </div>
             <div className="mt-4 text-center text-sm text-[#436f53]">
               Don&apos;t have an account?{" "}
-              <a href="#" className="underline underline-offset-4 text-[#6a8f73] hover:text-[#436f53]">
+              <Link href="/signUp" className="underline underline-offset-4 text-[#6a8f73] hover:text-[#436f53]">
                 Sign up
-              </a>
+              </Link>
             </div>
           </form>
         </CardContent>

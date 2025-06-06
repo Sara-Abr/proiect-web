@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import './global.css'
+import { AuthUserProvider } from '@/auth/AuthContext';
 
 export const metadata: Metadata = {
   title: "Florile noastre",
@@ -16,7 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AuthUserProvider>
+          {children}
+        </AuthUserProvider>
+      </body>
     </html>
   )
 }
